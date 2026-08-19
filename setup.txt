@@ -1,0 +1,61 @@
+TALLER 01 - CLASE Client (Laravel 13)
+=====================================
+
+Requisitos
+----------
+- PHP >= 8.3 con extensiones: pdo_sqlite, mbstring, openssl, xml (las de Laravel).
+- Composer 2.x
+
+Pasos para correr el proyecto
+-----------------------------
+1. Descomprimir el .zip y entrar a la carpeta del proyecto:
+     cd taller01
+
+2. Instalar dependencias:
+     composer install
+
+3. Crear el archivo de configuración (si no viene incluido) y la llave de la app:
+     cp .env.example .env
+     php artisan key:generate
+
+4. Base de datos: el proyecto usa SQLite (no hay que instalar MySQL).
+   En .env debe estar:
+     DB_CONNECTION=sqlite
+   Crear el archivo de la base de datos si no existe:
+     touch database/database.sqlite
+
+   (Si prefiere MySQL: configure DB_CONNECTION=mysql, DB_HOST, DB_PORT,
+    DB_DATABASE, DB_USERNAME y DB_PASSWORD en .env y cree la base de datos vacía.)
+
+5. Correr las migraciones (crea la tabla clients):
+     php artisan migrate
+
+6. Levantar el servidor:
+     php artisan serve
+
+7. Abrir en el navegador la RUTA INICIAL:
+     http://127.0.0.1:8000/
+
+Rutas y actividades
+-------------------
+Actividad 1 - Vista inicial (2 enlaces):   GET    /
+Actividad 2 - Formulario de creación:      GET    /clients/create
+Actividad 3 - Inserción + validación:      POST   /clients
+Actividad 4 - Listar (id + nombre):        GET    /clients
+Actividad 5 - Ver un objeto:               GET    /clients/{id}
+Actividad 6 - Borrar objeto:               DELETE /clients/{id}
+
+Notas
+-----
+- La clase se llama Client (no se usa la clase User de Laravel).
+- Solo se usan atributos primitivos: first_name, last_name, email, password,
+  phone, address, role, registration_date, active.
+- La contraseña se guarda cifrada (cast 'hashed'), por eso en la vista de
+  detalle se muestra como "(cifrada)".
+- La validación está en app/Http/Requests/StoreClientRequest.php; si algo falla
+  el formulario se vuelve a mostrar con los errores y los datos anteriores.
+
+Pruebas automáticas (opcional)
+------------------------------
+     php artisan test --filter=ClientTest
+   (7 pruebas que cubren las 6 actividades)
