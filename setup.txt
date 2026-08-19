@@ -1,0 +1,13 @@
+1. Tener descargado php (8.5.9 =<), al igual, tener las extensiones: pdo_sqlite activada en el archivo "php.ini"
+2. Tener descargado composer, luego hacer ---> composer install (hay dependencias que no se suben al repo, sin hacer este comando, van a haber problemas)
+3. Tener descargado git
+4. Clonar repositorio ---> git clone https://github.com/Peejhay55/Distinguished-Gentlemen-Jewelry.git
+5. Cambiar a la rama del estudiante ---> git checkout PabloJ
+6. Cambiar al directorio del proyecto en laravel ---> cd Distinguished-Gentlemen-Jewelry\Proyecto-Arqui
+7. Copiar el archivo ".env.example" ---> copy .env.example .env y abilitar los campos de "DB" al igual que configurarlos con los datos de  tu base de datos local
+8. Generar la clave de la app ---> php artisan key:generate
+9. Publicar el idioma ---> php artisan lang:publish
+10. Migraciones ---> php artisan migrate 
+11. Correr el servidor ---> php artisan serve 
+12. Ir al endpoint /orders/welcome <--- Aquí se presenta la vista inicial 
+12. Crear orden o Ver listado de ordenes (si se selecciona "ver listado", se podrá oprimir un indice el cual llevará a otra pestaña en la que se podrá eliminar dicha orden)
